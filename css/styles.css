@@ -453,6 +453,47 @@ h6 {
     flex-wrap: wrap;
 }
 
+/* ---------- VISIT TIMER ---------- */
+.visit-timer {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 28px;
+    padding: 10px 22px;
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    animation: fadeInTimer 1s ease 2.5s both;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInTimer {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.visit-timer i {
+    color: var(--gold);
+    animation: timerPulse 2s ease-in-out infinite;
+}
+
+@keyframes timerPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.6; transform: scale(0.9); }
+}
+
+#timerDisplay {
+    color: var(--gold);
+    font-weight: 700;
+    font-family: var(--font-heading);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.5px;
+}
+
 .hero-scroll {
     position: absolute;
     bottom: 30px;
@@ -583,6 +624,59 @@ h6 {
 /* ---------- SKILLS ---------- */
 .skills {
     background: var(--bg-secondary);
+}
+
+.skills-filter {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 24px;
+    border-radius: 50px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.filter-btn:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
+.filter-btn.active {
+    background: var(--gold-gradient);
+    color: #0a0a0a;
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.skill-card {
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
+                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.4s ease,
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+}
+
+.skill-card.filtering-out {
+    opacity: 0;
+    transform: scale(0.92) translateY(15px);
+    filter: blur(8px);
+    pointer-events: none;
+}
+
+.skill-card.hidden {
+    display: none;
 }
 
 .skills-grid {

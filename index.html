@@ -72,6 +72,10 @@
                 <a href="#projects" class="btn btn-primary">View My Work</a>
                 <a href="#contact" class="btn btn-outline">Get In Touch</a>
             </div>
+            <div class="visit-timer" id="visitTimer">
+                <i class="fas fa-clock"></i>
+                <span>You've been here for <span id="timerDisplay">0:00</span></span>
+            </div>
         </div>
         <div class="hero-scroll">
             <a href="#about" aria-label="Scroll Down">
@@ -91,7 +95,7 @@
             <div class="about-grid">
                 <div class="about-image animate-on-scroll">
                     <div class="image-wrapper">
-                        <img src="assets/images/mazen.jpeg" alt="Mazen Abdelatty" loading="lazy">
+                        <img src="images/mazen.jpeg" alt="Mazen Abdelatty" loading="lazy">
                         <div class="image-border"></div>
                     </div>
                 </div>
@@ -128,106 +132,113 @@
             <h2 class="section-title animate-on-scroll">
                 <span class="gold">&lt;</span> Skills <span class="gold">/&gt;</span>
             </h2>
+            <div class="skills-filter animate-on-scroll">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="frontend">Frontend</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
+                <button class="filter-btn" data-filter="cyber">Cyber</button>
+                <button class="filter-btn" data-filter="tools">Tools</button>
+            </div>
             <div class="skills-grid">
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="frontend">
                     <div class="skill-icon"><i class="fab fa-html5"></i></div>
                     <h4>HTML5</h4>
                     <div class="skill-bar">
                         <div class="skill-progress" data-width="90%"></div>
                     </div>
                 </div>
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="frontend">
                     <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
                     <h4>CSS3</h4>
                     <div class="skill-bar">
                         <div class="skill-progress" data-width="85%"></div>
                     </div>
                 </div>
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="frontend">
                     <div class="skill-icon"><i class="fab fa-js"></i></div>
                     <h4>JavaScript</h4>
                     <div class="skill-bar">
                         <div class="skill-progress" data-width="80%"></div>
                     </div>
                 </div>
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="backend">
                     <div class="skill-icon"><i class="fab fa-python"></i></div>
                     <h4>Python</h4>
                     <div class="skill-bar">
                         <div class="skill-progress" data-width="85%"></div>
                     </div>
                 </div>
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="backend">
                     <div class="skill-icon"><i class="fab fa-java"></i></div>
                     <h4>Java</h4>
                     <div class="skill-bar">
                         <div class="skill-progress" data-width="75%"></div>
                     </div>
                 </div>
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="tools">
                     <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
                     <h4>Git</h4>
                     <div class="skill-bar">
                         <div class="skill-progress" data-width="80%"></div>
                     </div>
                 </div>
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="frontend">
                     <div class="skill-icon"><i class="fab fa-react"></i></div>
                     <h4>React</h4>
                     <div class="skill-bar">
                         <div class="skill-progress" data-width="75%"></div>
                     </div>
                 </div>
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="backend">
                     <div class="skill-icon"><i class="fab fa-node-js"></i></div>
                     <h4>Node.js</h4>
                     <div class="skill-bar">
                         <div class="skill-progress" data-width="78%"></div>
                     </div>
                 </div>
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="backend">
                     <div class="skill-icon"><i class="fas fa-server"></i></div>
                     <h4>Express.js</h4>
                     <div class="skill-bar">
                         <div class="skill-progress" data-width="75%"></div>
                     </div>
                 </div>
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="backend">
                     <div class="skill-icon"><i class="fas fa-leaf"></i></div>
                     <h4>MongoDB</h4>
                     <div class="skill-bar">
                         <div class="skill-progress" data-width="70%"></div>
                     </div>
                 </div>
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="backend">
                     <div class="skill-icon"><i class="fas fa-fire"></i></div>
                     <h4>Firebase</h4>
                     <div class="skill-bar">
                         <div class="skill-progress" data-width="72%"></div>
                     </div>
                 </div>
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="backend">
                     <div class="skill-icon"><i class="fas fa-database"></i></div>
                     <h4>MySQL</h4>
                     <div class="skill-bar">
                         <div class="skill-progress" data-width="70%"></div>
                     </div>
                 </div>
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="cyber">
                     <div class="skill-icon"><i class="fas fa-dragon"></i></div>
                     <h4>Kali Linux</h4>
                     <div class="skill-bar">
                         <div class="skill-progress" data-width="75%"></div>
                     </div>
                 </div>
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="tools">
                     <div class="skill-icon"><i class="fab fa-ubuntu"></i></div>
                     <h4>Ubuntu Linux</h4>
                     <div class="skill-bar">
                         <div class="skill-progress" data-width="80%"></div>
                     </div>
                 </div>
-                <div class="skill-card animate-on-scroll">
+                <div class="skill-card animate-on-scroll" data-category="tools">
                     <div class="skill-icon"><i class="fas fa-terminal"></i></div>
                     <h4>Bash Script</h4>
                     <div class="skill-bar">
@@ -248,7 +259,7 @@
                 <!-- Project 1 -->
                 <div class="project-card animate-on-scroll">
                     <div class="project-image">
-                        <img id="eeProjectImg" src="assets/images/EEBlack.png" alt="EE Club Website" loading="lazy">
+                        <img id="eeProjectImg" src="images/EEBlack.png" alt="EE Club Website" loading="lazy">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="https://www.eec-kfupm.com" target="_blank" class="project-link"
@@ -269,6 +280,39 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
+                
+
+                <!-- Project 2 -->
+                 <div class="project-card animate-on-scroll">
+                    <div class="project-image">
+                        <img id="ccProjectImg" src="images/CCBlack.png" alt="CC Club Website" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://testing.cckfupm.com" target="_blank" class="project-link"
+                                    title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>CC Club Website</h3>
+                        <p>Developed a comprehensive management portal for the Computer Science Club.
+                             Features include a dynamic member directory, real-time event registration, 
+                             and an automated club enrollment system. Leveraged low-latency caching with 
+                             Redis to optimize high-traffic registration periods.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Redis</span>
+                            <span class="tag">Next</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+                
 
             </div>
         </div>

@@ -82,12 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
     const profileImg = document.querySelector('.image-wrapper img');
     const eeProjectImg = document.getElementById('eeProjectImg');
+    const ccProjectImg = document.getElementById('ccProjectImg');
     
     // Define paths for images that should swap based on theme
-    const darkImage = 'assets/images/mazen.jpeg';
-    const lightImage = 'assets/images/Mazen_White.jpeg';
-    const eeDarkImage = 'assets/images/EEBlack.png';
-    const eeLightImage = 'assets/images/EEWhite.png';
+    const darkImage = 'images/mazen.jpeg';
+    const lightImage = 'images/Mazen_White.jpeg';
+    const eeDarkImage = 'images/EEBlack.png';
+    const eeLightImage = 'images/EEWhite.png';
+    const ccDarkImage = 'images/CCDark.png';
+    const ccLightImage = 'images/CCWhite.png';
 
     // Apply the saved theme immediately on page load
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -118,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateThemeImages(theme, animate = false) {
         const profileSrc = theme === 'dark' ? darkImage : lightImage;
         const eeSrc = theme === 'dark' ? eeDarkImage : eeLightImage;
+        const ccSrc = theme === 'dark' ? ccDarkImage : ccLightImage;
 
         if (animate) {
             if (profileImg) {
@@ -134,9 +138,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     eeProjectImg.style.opacity = '1';
                 }, 800);
             }
+            if (ccProjectImg) {
+                ccProjectImg.style.opacity = '0';
+                setTimeout(() => {
+                    ccProjectImg.src = ccSrc;
+                    ccProjectImg.style.opacity = '1';
+                }, 800);
+            }
         } else {
             if (profileImg) profileImg.src = profileSrc;
             if (eeProjectImg) eeProjectImg.src = eeSrc;
+            if (ccProjectImg) ccProjectImg.src = ccSrc;
         }
     }
 
@@ -359,7 +371,64 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
 
-    // ─── 10. GOLD PARTICLES IN HERO ───
+    // ─── 10. SKILLS FILTERING ───
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const skillCards = document.querySelectorAll('.skill-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (btn.classList.contains('active')) return;
+
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.getAttribute('data-filter');
+
+            // 1. Fade out all cards first
+            skillCards.forEach(card => {
+                card.classList.add('filtering-out');
+            });
+
+            // 2. After a shorter fade out, switch display and staggered fade in
+            setTimeout(() => {
+                let showingCount = 0;
+                
+                skillCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    
+                    if (filter === 'all' || filter === category) {
+                        card.classList.remove('hidden');
+                        
+                        // Use requestAnimationFrame for smoother timing
+                        requestAnimationFrame(() => {
+                            setTimeout(() => {
+                                card.classList.remove('filtering-out');
+                            }, showingCount * 40); // Snappy 40ms stagger
+                            showingCount++;
+                        });
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            }, 200); // Super fast hide phase (200ms)
+        });
+    });
+
+    // ─── 11. VISIT TIMER LOGIC ───
+    const timerDisplay = document.getElementById('timerDisplay');
+    let secondsSpent = 0;
+
+    function updateTimer() {
+        secondsSpent++;
+        const minutes = Math.floor(secondsSpent / 60);
+        const seconds = secondsSpent % 60;
+        timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    setInterval(updateTimer, 1000);
+
+    // ─── 11. GOLD PARTICLES IN HERO ───
     function createParticles() {
         const particleCount = 30;
         for (let i = 0; i < particleCount; i++) {
